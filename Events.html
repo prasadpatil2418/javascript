@@ -1,0 +1,36 @@
+  <html>
+    <head>
+        <title>JavaScript</title>
+        <script> 
+
+        var a= "Global Variable"; // a is Global Variable outside function.
+
+        function hello(){
+
+           // document.write("Hello Everyone");
+            alert("Hello Everyone");
+        }
+
+        // onclick - clicking on mouse
+        //  ondblclick- double clicking on mouse
+        //  oncontextmenu - right clicking on mouse
+        // onmouseenter - hover on mouse
+        // onmouseout - not hovering on mouse
+        //onmousedown - click on mouse
+        //onmouseup - not click on mouse
+        // onkeypress- used in body tag only and event is opening clicking on any key on keyboard.
+        // onresize- used in body tag only and event is opening on resizing.
+        // onscroll - event is started when page is scrolled
+        </script>
+    </head>
+    <body onkeypress="hello()">        
+<button onclick="hello()">Click Me</button> 
+<p ondblclick="hello()">Double Click on Me</p>
+<p oncontextmenu="hello()">Right Click on Me</p>  
+<p onmouseenter="hello()">Hover on Me</p>  
+<p onmouseout="hello()">Remove Hover on Me</p>  
+    </body>
+    <body onresize="hello()"> 
+
+    </body>
+</html>
