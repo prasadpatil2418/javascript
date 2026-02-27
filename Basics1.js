@@ -20,7 +20,7 @@ for(i=0;i<scores.length; i++)
 
     //creates an arguments and perform the action as per condition
     const newEvenScore = scores.filter(score=>score%2==0)
-console.log("new array of scores is",newEvenScore)
+console.log("new array of scores is",newEvenScore) 
 
 //map concepts:
 var array = [10,11,13,16,18]

@@ -14,7 +14,7 @@ function factorial(n) {
     return n * factorial(n - 1);
 }
 console.log(factorial(5));
-
+ 
 //Check if a String is Palindrome
 function isPalindrome(str) {
     const reversed = str.split('').reverse().join('');
@@ -67,6 +67,11 @@ let inputString = "Hello, how are you?";
 let result = removeVowels(inputString);
 console.log("String without vowels:", result);
 
+//remove vowels using regex
+function removeVowels(str) {
+    return str.replace(/[aeiou]/gi,'');
+}
+console.log(removeVowels("hello world"));
 
 //sumOfNaturalNumbers
 function sumOfNaturalNumbers(n) {
@@ -102,7 +107,7 @@ console.log("Letters:", resultN.letters);
 console.log("Special Characters:", resultN.specialCharacters);
 
 //check array element
-let countries = ['india', 'pak', 'nepal'];
+let countries = ['india', 'pak', 'nepal','indonesia'];
 
 function isAustraliaPresent(array) {
     for (let i = 0; i < array.length; i++) {
@@ -114,6 +119,17 @@ function isAustraliaPresent(array) {
 }
 console.log(isAustraliaPresent(countries)); // Output: false
 
+// check array element using includes
+function checkElement(arr, element) {
+    return arr.includes(element);
+}   
+console.log(checkElement(countries, 'india')); // Output: true
+
+//find array element using startWith i
+function findElementByStart(arr, prefix) {
+    return arr.filter(item => item.toLowerCase().startsWith(prefix.toLowerCase()));
+}
+console.log(findElementByStart(countries, 'i')); // Output: [ 'india', 'indonesia' ]
 
 //JavaScript Program: Count Occurrences of Characters in a String
 function countCharacters(str) {
