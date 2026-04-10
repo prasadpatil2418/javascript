@@ -1,10 +1,4 @@
-/* 1. Reverse a String
-Problem: Write a function to reverse a given string.
-
-split('') turns the string into an array of characters.
-reverse() reverses the array.
-join('') combines the array back into a string.*/
-
+// 1. Reverse a String
 function reverseString(str) {
   return str.split('').reverse().join('');
 }
@@ -13,20 +7,26 @@ console.log(reverseString("QA")); // Output: "AQ"
 
 //Special case
 function reverseWords(input) {
-    // Remove punctuation and split into words
-    // Reverse the array of words
-    // Join them into a string
   const reversed = input.replace(/[?.,!]/g, '')
                         .split(' ')
                         .reverse()
                         .join(' ') +"?"
     return reversed;
 }
-
 // Example usage:
 const inputN = "How you are doing today?";
 const outputN = reverseWords(input);
 console.log(outputN); // Output: "today doing are you How"
+
+//reverse string using for loop
+function reverseString(str) {
+  let reversed = '';  
+  for (let i = str.length - 1; i >= 0; i--) {
+      reversed += str[i];  
+  } 
+  return reversed;
+}
+console.log(reverseString("hello world")); // Output: "dlrow olleh"
 
 //reverse array
 function reverseArray(arr) {
@@ -40,11 +40,50 @@ console.log(resultArray); // Output: [5, 4, 3, 2, 1]
 // Method 2: Manual reversal using a loop
 let originalArray = [10, 20, 30, 40, 50];
 let reversedArray = [];
-
 for (let i = originalArray.length - 1; i >= 0; i--) {
     reversedArray.push(originalArray[i]);
 }
 console.log("Reversed array (manual):", reversedArray);
+
+//Sorting a String Alphabetically
+function sortString(str) {
+  return str.split("").sort().join("");
+}
+// Example usage:
+let input2 = "javascript langauge";
+let sortedString = sortString(input2);
+console.log("Sorted String:", sortedString); // Output: "aacijprstv"
+
+// Reverse and Sort a String
+function reverseSortString(str){
+  
+  return str.split('').sort((a,b)=>b.localeCompare(a)).join('')
+}
+let result1 = reverseSortString('javascript');
+console.log(result1);  // Output: "vtsrpjicaa"
+
+//sort array
+function sortArray(arr) {
+  return arr.sort((a, b) => a - b);
+}
+console.log(sortArray([3, 1, 4, 2]));
+
+//program to sort array using for loop
+function sortArray(arr) {
+  for (let i = 0; i < arr.length; i++) {
+      for (let j = i + 1; j < arr.length; j++) {
+          if (arr[i] > arr[j]) { // for largest use <
+              let temp = arr[i];
+              arr[i] = arr[j];
+              arr[j] = temp;
+          }
+      }
+  }
+  return arr;
+}
+console.log(sortArray([10, 5, 8, 20, 9])); // Output: [5, 8, 9, 10, 20]
+
+
 
 /*2. Find Duplicates in an Array
 Problem: Identify duplicates in an array.*/
@@ -289,43 +328,59 @@ let input1 = "Welcome to this interview";
 let output = rearrange(input1);
 console.log(output); 
 
-//17.program to sort array using for loop
-function sortArray(arr) {
-  for (let i = 0; i < arr.length; i++) {
-      for (let j = i + 1; j < arr.length; j++) {
-          if (arr[i] > arr[j]) { // for largest use <
-              let temp = arr[i];
-              arr[i] = arr[j];
-              arr[j] = temp;
-          }
-      }
+
+
+
+// Find the first non-repeating character in a string 
+function firstNonRepeatingChar(string) {
+  const str=string.toLowerCase()
+  const charCount = {};
+
+  // Step 1: Count occurrences of each character
+  for (let char of str) {
+    charCount[char] = (charCount[char] || 0) + 1;
   }
-  return arr;
+
+  // Step 2: Find the first character with count 1
+  for (let char of str) {
+    if (charCount[char] === 1) {
+      return char;
+    }
+  }
+
+  return null; // If no non-repeating character found
 }
-console.log(sortArray([10, 5, 8, 20, 9])); // Output: [5, 8, 9, 10, 20]
 
-//sort array
-function sortArray(arr) {
-  return arr.sort((a, b) => a - b);
+// Test Data
+const string = "Welcome to the Michelin interview. Best of luck to you";
+
+console.log(firstNonRepeatingChar(string));
+
+// program to check last repeating character in a string
+function lastRepeatingChar(str) {
+    let map = {};
+
+    for (let char of str) {
+        map[char] = (map[char] || 0) + 1;
+    }
+
+    for (let i = str.length - 1; i >= 0; i--) {
+        if (map[str[i]] > 1) {
+            return str[i];
+        }
+    }
+    return null;
 }
-console.log(sortArray([3, 1, 4, 2]));
+console.log(lastRepeatingChar("abcddcdafgh"))
 
-//Sorting a String Alphabetically
-function sortString(str) {
-  return str.split("").sort().join("");
+// Program to reverse only the words in a string, keeping special characters in place
+function reverseWordsOnly(str) {
+    let words = str.split(/[^a-zA-Z]+/);   // split by special chars
+    let reversed = words.reverse();
+    
+    let i = 0;
+    return str.replace(/[a-zA-Z]+/g, () => reversed[i++]);
 }
-// Example usage:
-let input2 = "javascript langauge";
-let sortedString = sortString(input2);
-console.log("Sorted String:", sortedString); // Output: "aacijprstv"
 
-// Reverse and Sort a String
-function reverseSortString(str){
-  
-  return str.split('').sort((a,b)=>b.localeCompare(a)).join('')
-}
-let result1 = reverseSortString('javascript');
-console.log(result1);  // Output: "vtsrpjicaa"
-
-
-
+// Test
+console.log(reverseWordsOnly("ab@cd!ef")); // Output: "ef@cd!ab"

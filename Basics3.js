@@ -61,7 +61,6 @@ function removeVowels(str) {
     // Use regex to replace vowels with an empty string
     return str.split('').filter(char => !vowels.includes(char)).join('');
 }
-
 // Example usage
 let inputString = "Hello, how are you?";
 let result = removeVowels(inputString);
@@ -265,3 +264,18 @@ function compareArrays(arr1, arr2) {
 }
 console.log(compareArrays([1, 2, 3], [1, 2, 3])); // Output: true
 console.log(compareArrays([1, 2, 3], [1, 2, 4])); // Output: false
+
+// inputstr = "abbbccaabb"
+// output str =  "a1b3c2a2b2"
+function countCharacters(str) {
+    let count = {}; 
+    for (let char of str) {
+        count[char] = (count[char] || 0) + 1; 
+    }   
+    let result = '';
+    for (let char in count) {
+        result += char + count[char];
+    }
+    return result;
+}
+let inputStr = "abbbccaabb";
